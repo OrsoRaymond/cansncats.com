@@ -1570,3 +1570,206 @@ input::placeholder,
 textarea::placeholder {
   color: #75818c;
 }
+
+.radio-card {
+  position: relative;
+  overflow: hidden;
+  padding: 0.9rem;
+  border: 2px solid #3a4652;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(201, 103, 45, 0.12), transparent 34%),
+    linear-gradient(145deg, #0a0d11, #171d23);
+  color: #e7edf2;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.045);
+}
+
+.radio-card::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent 0 7px, rgba(255, 255, 255, 0.018) 8px);
+  content: "";
+}
+
+.radio-topline,
+.radio-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  text-transform: uppercase;
+}
+
+.radio-topline {
+  padding: 0.1rem 0.15rem 0.75rem;
+  color: #9aa6b2;
+  font-size: 0.75rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+}
+
+.radio-topline strong {
+  border: 1px solid rgba(201, 103, 45, 0.5);
+  border-radius: 999px;
+  padding: 0.3rem 0.55rem;
+  background: rgba(201, 103, 45, 0.1);
+  color: #e0a17d;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.radio-console {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.4rem;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: #080b0e;
+}
+
+.tuner-window {
+  display: grid;
+  gap: 1rem;
+}
+
+.frequency-readout {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.frequency-readout small {
+  margin-right: auto;
+  color: #7f8b96;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.frequency-readout strong {
+  color: #d87942;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.frequency-readout span {
+  color: #79c2bf;
+  font-size: 0.75rem;
+  font-weight: 950;
+}
+
+.dial-scale {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 0.3rem 0.15rem;
+  border-top: 2px solid #44505a;
+  color: #89949e;
+  font-size: 0.66rem;
+  font-weight: 900;
+}
+
+.dial-scale::before {
+  position: absolute;
+  top: -0.45rem;
+  left: 0;
+  right: 0;
+  height: 0.75rem;
+  background: repeating-linear-gradient(90deg, #53606b 0 1px, transparent 1px 7.5%);
+  content: "";
+}
+
+.dial-needle {
+  position: absolute;
+  top: -0.65rem;
+  left: 52.5%;
+  width: 2px;
+  height: 2.35rem;
+  border-radius: 999px;
+  background: #d87942;
+  box-shadow: 0 0 10px rgba(216, 121, 66, 0.45);
+}
+
+.tuning-control {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  color: #7f8b96;
+  font-size: 0.65rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tuning-knob {
+  position: relative;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 2px solid #59636d;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 34%, #4b555e 0 5%, transparent 6%),
+    radial-gradient(circle, #2a3138 0 40%, #151a20 42% 64%, #080b0e 66%);
+  box-shadow: inset 0 0 0 5px #10151a, 0 6px 14px rgba(0, 0, 0, 0.5);
+}
+
+.tuning-knob i {
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  width: 2px;
+  height: 1rem;
+  border-radius: 999px;
+  background: #d87942;
+  transform: rotate(28deg);
+  transform-origin: 50% 1.8rem;
+}
+
+.radio-footer {
+  padding: 0.75rem 0.15rem 0.1rem;
+  color: #77838e;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.radio-footer strong {
+  margin-right: auto;
+  color: #e7edf2;
+  font-size: 0.72rem;
+}
+
+.on-air-light {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: #c9672d;
+  box-shadow: 0 0 10px rgba(201, 103, 45, 0.5);
+  animation: livePulse 1.8s infinite;
+}
+
+@media (max-width: 520px) {
+  .radio-console {
+    grid-template-columns: 1fr;
+  }
+
+  .tuning-control {
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tuning-knob {
+    width: 3.8rem;
+    height: 3.8rem;
+  }
+}
