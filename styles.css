@@ -1656,9 +1656,10 @@ textarea::placeholder {
 
 .frequency-readout strong {
   color: #d87942;
-  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-size: clamp(1.65rem, 4.5vw, 2.75rem);
   line-height: 0.9;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
 }
 
 .frequency-readout span {
