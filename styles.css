@@ -1389,3 +1389,184 @@ textarea:focus {
     transition-duration: 1ms !important;
   }
 }
+
+/* Softer studio-night palette: lower glare without losing the show's identity. */
+:root {
+  --bg: #0d1116;
+  --ink: #e7edf2;
+  --muted: #9aa6b2;
+  --line: #29323c;
+  --panel: #171d24;
+  --teal: #279b98;
+  --orange: #c9672d;
+  --green: #668f3c;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+body {
+  background:
+    linear-gradient(90deg, rgba(39, 155, 152, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(39, 155, 152, 0.045) 1px, transparent 1px),
+    var(--bg);
+}
+
+.site-header {
+  border-color: var(--line);
+  background: rgba(13, 17, 22, 0.9);
+}
+
+nav a:hover,
+nav a:focus-visible,
+.episode-row p,
+.request-chips span {
+  background: #18302f;
+  color: #8bd0cd;
+}
+
+.hero {
+  background:
+    linear-gradient(135deg, rgba(201, 103, 45, 0.07) 0%, transparent 34%),
+    linear-gradient(315deg, rgba(39, 155, 152, 0.09) 0%, transparent 38%),
+    #0d1116;
+}
+
+.kicker,
+.form-status {
+  color: #7bc4c1;
+}
+
+.button,
+.request-form button,
+.mini-player,
+.hero-visual,
+.signal-card,
+.prompt-stack article,
+.impact-meter,
+.community-card,
+.status-copy a,
+.launch-board,
+.episode-row article,
+.request-form,
+.request-chips span {
+  border-color: #3a4652;
+}
+
+.button:hover,
+.button:focus-visible,
+.request-form button:hover,
+.request-form button:focus-visible,
+.community-card a:hover,
+.community-card a:focus-visible,
+.status-copy a:hover,
+.status-copy a:focus-visible {
+  box-shadow: 6px 6px 0 #050709;
+}
+
+.primary,
+.request-form button,
+.status-copy a,
+.ticker {
+  background: #b95e2b;
+  color: #f7f2ed;
+}
+
+.ghost,
+.mini-player,
+.hero-visual,
+.community-card,
+.launch-board,
+.episode-row article,
+.request-form {
+  background-color: var(--panel);
+}
+
+.mini-player {
+  background: rgba(23, 29, 36, 0.9);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.24);
+}
+
+.hero-visual {
+  background:
+    linear-gradient(135deg, rgba(39, 155, 152, 0.07), transparent 42%),
+    var(--panel);
+  box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.board-top,
+.platforms,
+.launch-board-top,
+.site-footer {
+  background: #090c10;
+  color: #e7edf2;
+}
+
+.signal-card {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(39, 155, 152, 0.18), transparent 28%),
+    linear-gradient(145deg, #0b0f13, #171e25);
+}
+
+.signal-header i,
+.live-dot,
+.waveform span,
+.signal-frequency strong {
+  filter: saturate(0.78) brightness(0.88);
+}
+
+.prompt-stack article,
+.prompt-stack article:nth-child(2),
+.prompt-stack article:nth-child(3) {
+  background: #1a2129;
+}
+
+.impact-meter div {
+  border-color: #3a4652;
+  background: #0b0f13;
+}
+
+.platforms a:nth-child(2) {
+  background: #13763d;
+  color: #f1f7f3;
+}
+
+.platforms a:nth-child(3) {
+  background: #a51d36;
+}
+
+.platforms a:nth-child(4),
+.community-card a {
+  background: #4651b8;
+}
+
+.community-card,
+.launch-board,
+.episode-row article,
+.request-form {
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.24);
+}
+
+.queue {
+  background: #11171d;
+}
+
+.launch-board li.active {
+  background: linear-gradient(90deg, rgba(39, 155, 152, 0.12), transparent);
+}
+
+.launch-board li.active > span,
+.topic-list span,
+.launch-board-top strong {
+  color: #f2f6f7;
+}
+
+input,
+textarea {
+  border-color: #35404b;
+  background: #0f141a;
+  color: #e7edf2;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #75818c;
+}
