@@ -1774,3 +1774,93 @@ textarea::placeholder {
     height: 3.8rem;
   }
 }
+
+/* Clearer editorial structure for the podcast story. */
+.hero-inner {
+  gap: clamp(2.5rem, 7vw, 6rem);
+}
+
+.hero-visual {
+  gap: 1.2rem;
+  padding: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+  gap: clamp(2rem, 7vw, 6rem);
+  align-items: start;
+}
+
+.about-story h2 {
+  max-width: 760px;
+}
+
+.about-story > p:not(.kicker) {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.why-listen {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #141a20;
+}
+
+.why-listen h3 {
+  display: block;
+  height: auto;
+  margin-bottom: 1.4rem;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.1;
+}
+
+.reason-list {
+  display: grid;
+}
+
+.reason-list article {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.reason-list article > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: #18302f;
+  color: #8bd0cd;
+  font-size: 0.75rem;
+  font-weight: 950;
+}
+
+.reason-list article div {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.reason-list strong {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.reason-list p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+@media (max-width: 860px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
