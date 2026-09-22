@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Cans n Cats is a podcast about technology, cyber, AI, and what tech is doing to real people."
+    />
+    <title>Cans n Cats | Tech Talk Podcast</title>
+    <link rel="icon" href="image.webp" />
+    <link rel="preload" href="image.webp" as="image" />
+    <link rel="preload" href="cat-character.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Cans n Cats home">
+        <img src="image.webp" alt="Cans n Cats logo" />
+        <span>
+          <strong>Cans n Cats</strong>
+          <small>Tech talk podcast</small>
+        </span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#listen">Listen</a>
+        <a href="#topics">Topics</a>
+        <a href="#status">Status</a>
+        <a href="#request">Request</a>
+        <a href="https://discord.gg/otoro" target="_blank" rel="noreferrer">Discord</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="kicker">Apple / Spotify / YouTube</p>
+            <h1 id="hero-title">Cans n Cats</h1>
+            <p class="lede">
+              A listener-driven podcast where the cyber cats dig into tech,
+              AI, security, and the question that actually matters: what is
+              this doing to us as people?
+            </p>
+            <div class="actions">
+              <a class="button primary" href="#request">Send a topic</a>
+              <a class="button ghost" href="#listen">Find the show</a>
+              <a class="button discord-button" href="https://discord.gg/otoro" target="_blank" rel="noreferrer">
+                Join Discord
+              </a>
+            </div>
+            <div class="mini-player" aria-label="Current topic queue">
+              <div class="equalizer" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <p>
+                <strong>Now queuing</strong>
+                <span id="promptRotator">AI tools that are changing school</span>
+              </p>
+            </div>
+          </div>
+          <div class="hero-visual" aria-label="Live Cans n Cats topic board">
+            <div class="mascot-card">
+              <img src="cat-character.png" alt="Cans n Cats cyber cat character" />
+              <div>
+                <p>Cyber Cat on duty</p>
+                <span>Daily drops, topic picks, and tech claims worth digging into.</span>
+              </div>
+            </div>
+            <div class="board-top">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span>Live topic lab</span>
+              <strong>03 queued</strong>
+            </div>
+            <div class="signal-card">
+              <div class="signal-header">
+                <span><i aria-hidden="true"></i> Listener signal</span>
+                <strong>Live</strong>
+              </div>
+              <div class="signal-display">
+                <div class="signal-frequency" aria-label="Signal frequency 98.7">
+                  <small>Frequency</small>
+                  <strong>98.7</strong>
+                  <span>FM</span>
+                </div>
+                <div class="waveform" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="signal-footer">
+                <span>Incoming topic</span>
+                <strong>AI + PRIVACY</strong>
+                <span class="signal-strength" aria-label="Strong signal"><i></i><i></i><i></i><i></i></span>
+              </div>
+            </div>
+            <div class="prompt-stack">
+              <article>
+                <span>01</span>
+                <p>Is this AI tool actually useful?</p>
+              </article>
+              <article>
+                <span>02</span>
+                <p>What happens when your data leaks?</p>
+              </article>
+              <article>
+                <span>03</span>
+                <p>Are smart devices worth the tradeoff?</p>
+              </article>
+            </div>
+            <div class="impact-meter" aria-label="Hype to real impact meter">
+              <span>Hype</span>
+              <div><i></i></div>
+              <span>Real impact</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="listen" class="platforms" aria-label="Podcast platforms">
+        <a href="https://podcasts.apple.com/" target="_blank" rel="noreferrer">
+          Apple Podcasts
+        </a>
+        <a href="https://open.spotify.com/" target="_blank" rel="noreferrer">
+          Spotify
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
+          YouTube
+        </a>
+        <a href="https://discord.gg/otoro" target="_blank" rel="noreferrer">
+          Discord
+        </a>
+      </section>
+
+      <section class="ticker" aria-label="Listener topic ideas">
+        <div class="ticker-track">
+          <span>AI drama</span>
+          <span>Discord drops</span>
+          <span>Password fails</span>
+          <span>Phone privacy</span>
+          <span>Smart homes</span>
+          <span>Data leaks</span>
+          <span>Robot rumors</span>
+          <span>Creator tools</span>
+          <span>Future jobs</span>
+          <span>AI drama</span>
+          <span>Discord drops</span>
+          <span>Password fails</span>
+          <span>Phone privacy</span>
+          <span>Smart homes</span>
+          <span>Data leaks</span>
+          <span>Robot rumors</span>
+          <span>Creator tools</span>
+          <span>Future jobs</span>
+        </div>
+      </section>
+
+      <section class="section community" aria-labelledby="community-title">
+        <div>
+          <p class="kicker">Daily Updates</p>
+          <h2 id="community-title">Join the server between episodes.</h2>
+        </div>
+        <div class="community-card">
+          <img class="community-mascot" src="cat-character.png" alt="" />
+          <p>
+            Get topic drops, behind-the-scenes updates, quick tech takes, and
+            a place to send ideas before they turn into episodes.
+          </p>
+          <a href="https://discord.gg/otoro" target="_blank" rel="noreferrer">
+            Join the Discord
+          </a>
+        </div>
+      </section>
+
+      <section class="intro section" aria-labelledby="intro-title">
+        <div>
+          <p class="kicker">The Show</p>
+          <h2 id="intro-title">Real talk about the tech everyone is using.</h2>
+        </div>
+        <p>
+          Cans n Cats takes requests from listeners and turns them into clear,
+          honest conversations. Send a headline, a device, a new app, a cyber
+          concern, or an AI claim. We will unpack what is real, what is hype,
+          and what people should actually pay attention to.
+        </p>
+      </section>
+
+      <section id="topics" class="section topics" aria-labelledby="topics-title">
+        <div class="section-title">
+          <p class="kicker">Topic Lane</p>
+          <h2 id="topics-title">What we dig into</h2>
+        </div>
+        <div class="topic-list">
+          <article>
+            <span>01</span>
+            <h3>AI in daily life</h3>
+            <p>Tools, bots, creators, school, work, and the line between help and dependency.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Cyber safety</h3>
+            <p>Breaches, scams, privacy, passwords, and the basics people wish someone explained.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Tech culture</h3>
+            <p>How platforms, phones, games, and social apps change how people act and connect.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Future questions</h3>
+            <p>Robots, smart homes, new devices, online identity, and what comes next.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="status" class="section show-status" aria-labelledby="status-title">
+        <div class="status-copy">
+          <p class="kicker">Show Status</p>
+          <h2 id="status-title">The first episode starts with you.</h2>
+          <p>
+            Cans n Cats is building its opening episode from real listener
+            questions. Send the topic you cannot stop thinking about and help
+            decide what the cyber cats investigate first.
+          </p>
+          <a href="#request">Add your question</a>
+        </div>
+        <div class="launch-board" aria-label="Podcast launch progress">
+          <div class="launch-board-top">
+            <span>Launch board</span>
+            <strong>In progress</strong>
+          </div>
+          <ol>
+            <li class="active">
+              <span>01</span>
+              <div>
+                <strong>Topic voting</strong>
+                <small>Open now</small>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <strong>Recording</strong>
+                <small>Up next</small>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <strong>First drop</strong>
+                <small>Date coming soon</small>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section queue" aria-labelledby="queue-title">
+        <div class="section-title">
+          <p class="kicker">Episode Queue</p>
+          <h2 id="queue-title">Possible first episodes</h2>
+        </div>
+        <div class="episode-row">
+          <article>
+            <p>AI</p>
+            <h3>Is AI making people smarter, or just faster?</h3>
+            <a href="#request">Pitch an angle</a>
+          </article>
+          <article>
+            <p>Cyber</p>
+            <h3>What really happens after a data leak?</h3>
+            <a href="#request">Pitch an angle</a>
+          </article>
+          <article>
+            <p>Culture</p>
+            <h3>Are smart devices helping us, watching us, or both?</h3>
+            <a href="#request">Pitch an angle</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="request" class="section request" aria-labelledby="request-title">
+        <div class="request-copy">
+          <p class="kicker">Listener Requests</p>
+          <h2 id="request-title">Tell us what to cover next.</h2>
+          <p>
+            Drop a question or topic and it will go straight to the Cans n Cats
+            Discord queue.
+          </p>
+          <div class="request-chips" aria-label="Request examples">
+            <span>Is this real?</span>
+            <span>Should I worry?</span>
+            <span>What changed?</span>
+          </div>
+        </div>
+
+        <form id="topicForm" class="request-form">
+          <label class="hp-field" aria-hidden="true">
+            Website
+            <input name="website" tabindex="-1" autocomplete="off" />
+          </label>
+          <label>
+            Name
+            <input name="name" autocomplete="name" placeholder="Cyber Cat" />
+          </label>
+          <label>
+            Topic
+            <textarea
+              name="topic"
+              rows="5"
+              required
+              placeholder="What should we talk about?"
+            ></textarea>
+          </label>
+          <label>
+            Email
+            <input name="contact" type="email" autocomplete="email" placeholder="you@example.com" />
+          </label>
+          <button type="submit">Send request</button>
+          <small class="privacy-note">Email is optional and only used if we need to follow up about your topic.</small>
+          <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <strong>Cans n Cats</strong>
+      <span>Code / Cyber / AI</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
