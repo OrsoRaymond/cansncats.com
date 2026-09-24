@@ -1,4 +1,26 @@
+document.documentElement.classList.add("js");
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+// --- Header state + scroll progress -----------------------------------------
+const header = document.querySelector(".site-header");
+const progressBar = document.querySelector("#scrollProgress");
+let scrollTicking = false;
+
+const onScroll = () => {
+  scrollTicking = false;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar?.style.setProperty("--progress", String(max > 0 ? window.scrollY / max : 0));
+  header?.classList.toggle("is-scrolled", window.scrollY > 24);
+};
+window.addEventListener("scroll", () => {
+  if (!scrollTicking) {
+    scrollTicking = true;
+    window.requestAnimationFrame(onScroll);
+  }
+}, { passive: true });
+onScroll();
 
 // --- Hero "Now queuing" rotator -------------------------------------------
 const promptRotator = document.querySelector("#promptRotator");
@@ -6,6 +28,7 @@ const queuedPrompts = [
   "AI tools that are changing school",
   "What data leaks actually expose",
   "Smart homes and privacy tradeoffs",
+  "Deepfakes and how to spot them",
   "Tech habits that change people",
 ];
 let promptIndex = 0;
@@ -14,89 +37,64 @@ if (promptRotator && !prefersReducedMotion) {
   window.setInterval(() => {
     promptIndex = (promptIndex + 1) % queuedPrompts.length;
     promptRotator.textContent = queuedPrompts[promptIndex];
-  }, 2600);
+    promptRotator.classList.remove("swap");
+    void promptRotator.offsetWidth; // restart the fade-in animation
+    promptRotator.classList.add("swap");
+  }, 2800);
 }
 
-// --- Podcast topic tuner ---------------------------------------------------
-// Six "stations" on the dial. Click a label or the knob, or use the arrow
-// keys, to tune. Until someone touches it, it slowly scans on its own.
-const STATIONS = [
-  { lane: "ai", topic: "AI + School" },
-  { lane: "cyber", topic: "Scams + Passwords" },
-  { lane: "privacy", topic: "AI + Privacy" },
-  { lane: "tech", topic: "Phones + Attention" },
-  { lane: "culture", topic: "Games + Social" },
-  { lane: "future", topic: "Robots + Smart Homes" },
-];
-const SCAN_INTERVAL_MS = 5200;
+// --- Scroll reveal ----------------------------------------------------------
+const revealEls = [...document.querySelectorAll(".reveal")];
 
-const tuner = document.querySelector(".radio-card");
+// Stagger siblings that sit in the same grid so cards cascade in.
+revealEls.forEach((el) => {
+  const siblings = [...el.parentElement.children].filter((child) => child.classList.contains("reveal"));
+  if (siblings.length > 1) el.style.setProperty("--delay", `${siblings.indexOf(el) * 90}ms`);
+});
 
-if (tuner) {
-  const stationButtons = [...tuner.querySelectorAll(".station")];
-  const needle = tuner.querySelector(".dial-needle");
-  const knob = tuner.querySelector("#tunerKnob");
-  const topicEl = tuner.querySelector("#tunerTopic");
-  const currentEl = tuner.querySelector("#tunerCurrent");
-  let stationIndex = stationButtons.findIndex((button) => button.getAttribute("aria-pressed") === "true");
-  if (stationIndex < 0) stationIndex = 2;
-  let scanTimer = 0;
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("in");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+  revealEls.forEach((el) => revealObserver.observe(el));
+} else {
+  revealEls.forEach((el) => el.classList.add("in"));
+}
 
-  const placeNeedle = () => {
-    const target = stationButtons[stationIndex];
-    if (!target || !needle) return;
-    const scaleRect = target.parentElement.getBoundingClientRect();
-    const rect = target.getBoundingClientRect();
-    needle.style.setProperty("--needle", `${rect.left - scaleRect.left + rect.width / 2}px`);
-  };
-
-  const tune = (next, { byUser = false } = {}) => {
-    stationIndex = ((next % STATIONS.length) + STATIONS.length) % STATIONS.length;
-    const station = STATIONS[stationIndex];
-
-    stationButtons.forEach((button, i) => button.setAttribute("aria-pressed", String(i === stationIndex)));
-    placeNeedle();
-    if (knob) knob.style.setProperty("--knob", `${-75 + stationIndex * 30}deg`);
-    if (topicEl) topicEl.textContent = `Topic ${String(stationIndex + 1).padStart(2, "0")}`;
-    if (currentEl) currentEl.textContent = station.topic;
-    tuner.dataset.lane = station.lane;
-
-    if (byUser) {
-      // Only announce changes the visitor made; the idle scan stays quiet for screen readers.
-      topicEl?.parentElement?.setAttribute("aria-live", "polite");
-      if (scanTimer) {
-        window.clearInterval(scanTimer);
-        scanTimer = 0;
-      }
-    }
-  };
-
-  stationButtons.forEach((button, i) => {
-    button.addEventListener("click", () => tune(i, { byUser: true }));
+// --- 3D tilt + cursor spotlight on cards -------------------------------------
+if (finePointer && !prefersReducedMotion) {
+  document.querySelectorAll("[data-tilt]").forEach((card) => {
+    const max = card.classList.contains("community-art") ? 14 : 9;
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      card.style.setProperty("--mx", `${x * 100}%`);
+      card.style.setProperty("--my", `${y * 100}%`);
+      card.style.transform =
+        `perspective(900px) rotateX(${(0.5 - y) * max}deg) rotateY(${(x - 0.5) * max}deg) translateZ(0)`;
+    });
+    card.addEventListener("pointerleave", () => {
+      card.style.transform = "";
+    });
   });
+}
 
-  knob?.addEventListener("click", () => tune(stationIndex + 1, { byUser: true }));
-
-  tuner.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-      event.preventDefault();
-      tune(stationIndex + 1, { byUser: true });
-      stationButtons[stationIndex]?.focus();
-    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-      event.preventDefault();
-      tune(stationIndex - 1, { byUser: true });
-      stationButtons[stationIndex]?.focus();
-    }
-  });
-
-  window.addEventListener("resize", placeNeedle);
-  document.fonts?.ready.then(placeNeedle);
-  tune(stationIndex);
-
-  if (!prefersReducedMotion) {
-    scanTimer = window.setInterval(() => tune(stationIndex + 1), SCAN_INTERVAL_MS);
+// --- Episode card waveforms ---------------------------------------------------
+document.querySelectorAll(".wave").forEach((wave, w) => {
+  const bars = 36;
+  for (let i = 0; i < bars; i++) {
+    const bar = document.createElement("i");
+    const h = 0.25 + 0.75 * Math.abs(Math.sin(i * 0.7 + w * 1.9) * Math.cos(i * 0.23 + w));
+    bar.style.setProperty("--h", h.toFixed(2));
+    bar.style.setProperty("--i", String(i));
+    wave.appendChild(bar);
   }
-}
+});
 
 // --- Live Discord community count -----------------------------------------
 const communityCount = document.querySelector("#communityCount");
@@ -107,8 +105,9 @@ if (communityCount) {
     .then((stats) => {
       if (!stats || !stats.members) return;
       const members = `${stats.members.toLocaleString()} members`;
+      communityCount.insertAdjacentHTML("afterbegin", '<span class="live-dot" aria-hidden="true"></span>');
       const online = stats.online ? ` · ${stats.online.toLocaleString()} online now` : "";
-      communityCount.textContent = `${members}${online}`;
+      communityCount.append(`${members}${online}`);
       communityCount.hidden = false;
     })
     .catch(() => {});

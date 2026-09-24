@@ -8,8 +8,10 @@ tiny Node API for the topic-request form.
 | Path | What |
 | --- | --- |
 | `index.html`, `styles.css`, `script.js` | The site. No build step. |
+| `hero3d.js` | The 3D hero (soda can, rings, spectrum, particles) built with Three.js. Falls back to the static logo without WebGL. |
+| `vendor/` | Self-hosted Three.js r170 (`three.module.min.js`, `RoomEnvironment.js`), since the CSP only allows same-origin scripts. |
 | `404.html`, `robots.txt`, `sitemap.xml`, `site.webmanifest` | Static extras served by nginx. |
-| `fonts/` | Self-hosted Inter (variable, latin subset). |
+| `fonts/` | Self-hosted Inter and Bricolage Grotesque (variable, latin subset). |
 | `image.webp`, `favicon.ico`, `icon-*.png`, `apple-touch-icon.png`, `og-image.jpg` | Logo, icons, share image. |
 | `server/topic-api.mjs` | API behind `/api/*` (see below). |
 | `worker/index.js` | Older Cloudflare Worker version of the API (not used by the box deploy). |
@@ -48,4 +50,5 @@ URLs (Cloudflare caches them for 7 days), restarts the API.
 
 nginx config: `/etc/nginx/sites-available/cansncats.com` (copy in `deploy/nginx-cansncats.com.conf`). It sets
 the security headers, incl. a Content Security Policy that only allows same-origin assets plus Cloudflare
-Web Analytics. Any new third-party script or embed needs a CSP entry there.
+Web Analytics. Any new third-party script or embed needs a CSP entry there. The CSP also blocks inline
+`style=""` attributes, so use classes (e.g. `.accent-teal`) instead.
