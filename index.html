@@ -3,26 +3,78 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0d1116" />
+    <title>Cans n Cats | Tech Talk Podcast</title>
     <meta
       name="description"
-      content="Cans n Cats is a podcast about technology, cyber, AI, and what tech is doing to real people."
+      content="Cans n Cats is a listener-led podcast about AI, cybersecurity, privacy, and the technology changing everyday life. Plain English, honest questions, your topics."
     />
-    <title>Cans n Cats | Tech Talk Podcast</title>
-    <link rel="icon" href="image.webp" />
-    <link rel="preload" href="image.webp" as="image" />
-    <link rel="preload" href="cat-character.png" as="image" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="canonical" href="https://cansncats.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cans n Cats" />
+    <meta property="og:title" content="Cans n Cats | Tech Talk Podcast" />
+    <meta
+      property="og:description"
+      content="Straight answers about AI, cyber, and the tech changing everyday life. Listeners pick the topics."
+    />
+    <meta property="og:url" content="https://cansncats.com/" />
+    <meta property="og:image" content="https://cansncats.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Cans n Cats cyber cat logo next to the words Tech talk podcast" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cans n Cats | Tech Talk Podcast" />
+    <meta
+      name="twitter:description"
+      content="Straight answers about AI, cyber, and the tech changing everyday life. Listeners pick the topics."
+    />
+    <meta name="twitter:image" content="https://cansncats.com/og-image.jpg" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/image.webp" as="image" />
+    <link rel="stylesheet" href="/styles.css?v=dev" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "PodcastSeries",
+            "@id": "https://cansncats.com/#podcast",
+            "name": "Cans n Cats",
+            "url": "https://cansncats.com/",
+            "description": "A listener-led podcast about AI, cybersecurity, privacy, and the technology changing everyday life.",
+            "image": "https://cansncats.com/icon-512.png",
+            "inLanguage": "en",
+            "genre": ["Technology", "Artificial Intelligence", "Cybersecurity", "Tech Culture"],
+            "sameAs": ["https://discord.gg/otoro"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cansncats.com/#website",
+            "url": "https://cansncats.com/",
+            "name": "Cans n Cats",
+            "inLanguage": "en",
+            "about": { "@id": "https://cansncats.com/#podcast" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#top">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Cans n Cats home">
-        <img src="image.webp" alt="Cans n Cats logo" />
+        <img src="/image.webp" alt="Cans n Cats logo" width="1024" height="1024" />
         <span>
           <strong>Cans n Cats</strong>
           <small>Tech talk podcast</small>
         </span>
       </a>
-      <nav aria-label="Main navigation">
+      <nav id="siteNav" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#listen">Listen</a>
         <a href="#topics">Topics</a>
@@ -66,7 +118,7 @@
           </div>
           <div class="hero-visual" aria-label="Cans n Cats podcast topic board">
             <div class="mascot-card">
-              <img src="cat-character.png" alt="Cans n Cats cyber cat character" />
+              <img src="/image.webp" alt="Cans n Cats cyber cat logo" width="1024" height="1024" />
               <div>
                 <p>Cyber Cat on duty</p>
                 <span>Daily drops, topic picks, and tech claims worth digging into.</span>
@@ -81,27 +133,29 @@
                 <div class="tuner-window">
                   <div class="frequency-readout">
                     <small>Selected</small>
-                    <strong>Topic 03</strong>
+                    <strong id="tunerTopic">Topic 03</strong>
                     <span>Podcast</span>
                   </div>
-                  <div class="dial-scale" aria-hidden="true">
-                    <span>AI</span>
-                    <span>CYBER</span>
-                    <span>PRIVACY</span>
-                    <span>TECH</span>
-                    <span>CULTURE</span>
-                    <span>FUTURE</span>
-                    <i class="dial-needle"></i>
+                  <div class="dial-scale" role="group" aria-label="Pick a topic lane">
+                    <button type="button" class="station" data-station="0" aria-pressed="false">AI</button>
+                    <button type="button" class="station" data-station="1" aria-pressed="false">Cyber</button>
+                    <button type="button" class="station" data-station="2" aria-pressed="true">Privacy</button>
+                    <button type="button" class="station" data-station="3" aria-pressed="false">Tech</button>
+                    <button type="button" class="station" data-station="4" aria-pressed="false">Culture</button>
+                    <button type="button" class="station" data-station="5" aria-pressed="false">Future</button>
+                    <i class="dial-needle" aria-hidden="true"></i>
                   </div>
                 </div>
-                <div class="tuning-control" aria-hidden="true">
-                  <div class="tuning-knob"><i></i></div>
+                <div class="tuning-control">
+                  <button type="button" class="tuning-knob" id="tunerKnob" aria-label="Tune to the next topic lane">
+                    <i aria-hidden="true"></i>
+                  </button>
                   <span>Browse</span>
                 </div>
               </div>
               <div class="radio-footer">
                 <span>Current topic</span>
-                <strong>AI + Privacy</strong>
+                <strong id="tunerCurrent">AI + Privacy</strong>
                 <i class="on-air-light" aria-hidden="true"></i>
               </div>
             </div>
@@ -175,10 +229,11 @@
           <h2 id="community-title">The show starts with what you want to know.</h2>
         </div>
         <div class="community-card">
-          <img class="community-mascot" src="cat-character.png" alt="" />
+          <img class="community-mascot" src="/image.webp" alt="" width="1024" height="1024" loading="lazy" decoding="async" />
           <p>
             Send a question, vote on future topics, and join the conversations
             that become upcoming episodes.
+            <span class="community-count" id="communityCount" hidden></span>
           </p>
           <a href="https://discord.gg/otoro" target="_blank" rel="noreferrer">
             Join the Discord
@@ -286,8 +341,8 @@
           <p class="kicker">Listener Requests</p>
           <h2 id="request-title">Tell us what to cover next.</h2>
           <p>
-            Drop a question or topic and it will go straight to the Cans n Cats
-            Discord queue.
+            Drop a question or topic and it goes straight into the Cans n Cats
+            topic queue for the next recording.
           </p>
           <div class="request-chips" aria-label="Request examples">
             <span>Is this real?</span>
@@ -303,7 +358,7 @@
           </label>
           <label>
             Name
-            <input name="name" autocomplete="name" placeholder="Cyber Cat" />
+            <input name="name" autocomplete="name" placeholder="Cyber Cat" maxlength="80" />
           </label>
           <label>
             Topic
@@ -311,12 +366,13 @@
               name="topic"
               rows="5"
               required
+              maxlength="1000"
               placeholder="What should we talk about?"
             ></textarea>
           </label>
           <label>
             Email
-            <input name="contact" type="email" autocomplete="email" placeholder="you@example.com" />
+            <input name="contact" type="email" autocomplete="email" placeholder="you@example.com" maxlength="120" />
           </label>
           <button type="submit">Send request</button>
           <small class="privacy-note">Email is optional and only used if we need to follow up about your topic.</small>
@@ -326,10 +382,20 @@
     </main>
 
     <footer class="site-footer">
-      <strong>Cans n Cats</strong>
-      <span>Code / Cyber / AI</span>
+      <div class="footer-brand">
+        <strong>Cans n Cats</strong>
+        <span>Code / Cyber / AI</span>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+        <a href="#status">Status</a>
+        <a href="#request">Request a topic</a>
+        <a href="https://discord.gg/otoro" target="_blank" rel="noreferrer">Discord</a>
+      </nav>
+      <small>&copy; <span id="year">2026</span> Cans n Cats. Independent and listener-led.</small>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="/script.js?v=dev"></script>
   </body>
 </html>

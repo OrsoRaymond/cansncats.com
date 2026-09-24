@@ -1,0 +1,13 @@
+{
+  "name": "Cans n Cats",
+  "short_name": "Cans n Cats",
+  "description": "A listener-led podcast about AI, cybersecurity, privacy, and the technology changing everyday life.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d1116",
+  "theme_color": "#0d1116",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
