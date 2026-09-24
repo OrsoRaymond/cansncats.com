@@ -43,5 +43,9 @@ After editing `.env`: `pm2 restart cansncats-api`.
 /home/tide/cansncats/deploy.sh
 ```
 
-Pulls `main`, rsyncs the static files to `/var/www/cansncats.com`, restarts the API.
-nginx config: `/etc/nginx/sites-available/cansncats.com`.
+Pulls `main`, rsyncs the static files to `/var/www/cansncats.com`, stamps `?v=<commit>` on the CSS/JS
+URLs (Cloudflare caches them for 7 days), restarts the API.
+
+nginx config: `/etc/nginx/sites-available/cansncats.com` (copy in `deploy/nginx-cansncats.com.conf`). It sets
+the security headers, incl. a Content Security Policy that only allows same-origin assets plus Cloudflare
+Web Analytics. Any new third-party script or embed needs a CSP entry there.
