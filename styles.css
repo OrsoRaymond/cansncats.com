@@ -1682,3 +1682,11 @@ button.tuning-knob:focus-visible {
   
   }
 }
+
+/* Phones: let the episode-queue panel background run edge to edge (its content stays at 22rem). */
+@media (max-width: 560px) {
+  .queue {
+    width: 100%;
+    margin: 0;
+  }
+}
